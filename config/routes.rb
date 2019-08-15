@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "supervisor/index"
   root "session#new"
   get "trainee/index"
   get "/login", to: "session#new"
