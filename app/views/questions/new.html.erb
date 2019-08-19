@@ -1,0 +1,27 @@
+<h1><%= t(".title") %></h1>
+<% provide(:button_text, t(".create")) %>
+  <p><%= link_to t(".back"), subjects_path %></p>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@question) do |f| %>
+  
+      <%= f.label t(".question") %>
+      <%= f.text_area :question_content, class: "form-control" %>
+
+      <%= f.label t(".answers") %>
+      <%= text_area_tag :answer1 %>
+
+      <%= text_area_tag :answer2 %>
+
+      <%= text_area_tag :answer3 %>
+
+      <%= text_area_tag :answer4 %>
+
+      <%= f.label t(".correct_answers") %>
+      <%= f.text_area :correct_answers, class: "form-control" %>
+
+      <%= f.label t(".type") %>
+      <%= f.text_field :question_type, class: "form-control" %>
+      
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+  </div>

@@ -27,4 +27,12 @@ module SessionHelper
     else trainee_index_path
     end
   end
+
+  def remember_subject(subject)
+    session[:subject_id] = subject.id
+  end
+
+  def current_subject
+    @current_subject ||= session[:subject_id]
+  end
 end

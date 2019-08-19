@@ -2,7 +2,7 @@
 <p><%= link_to t(".home"), home_path(current_user.role) %></p>
 <p><%= link_to t(".info"), edit_user_path(current_user) %></p> 
 <p><%= link_to t(".trainee_list"), users_path %></p>
-<p><%= link_to t(".subject_mng"), "#" %></p>
+<p><%= link_to t(".subject_mng"), subjects_path %></p>
 <p><%= link_to t(".signout"), logout_path, method: :delete %></p>
 <p><%= current_user.fullname %></p>
 <p><%= current_user.email %></p>
