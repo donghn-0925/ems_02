@@ -1,0 +1,18 @@
+<h1><%= t(".title") %></h1>
+<% provide(:button_text, t(".create")) %>
+  <p><%= link_to t(".back"), edit_subject_path(current_subject) %></p>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@exam) do |f| %>
+  
+      <%= f.label t(".name") %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label t(".time_limit") %>
+      <%= f.text_field :time_limit, class: "form-control" %>
+
+      <%= f.label t(".mark_require") %>
+      <%= f.text_field :mark_require, class: "form-control" %>
+      
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+  </div>

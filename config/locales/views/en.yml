@@ -1,4 +1,6 @@
 en:
+  name: "Name"
+  create: "Create new subject"
   fullname: "Fullname"
   email: "Email"
   password: "Password"
@@ -50,3 +52,53 @@ en:
       trainee_list: "Trainee list"
       signout: "sign out"
       subject_mng: "Subject management"
+  subjects:
+    index:
+      create_subject: "Create new subject"
+      title: "Subject management"
+      list: "Available subject"
+    new:
+      title: "Subject management"
+      name: "Subject name"
+      description: "About this subject"
+    edit:
+      name: "Subject name"
+      description: "About this subject"
+      save: "Save changes"
+      create_question: "Create a question"
+      list: "All questions"
+      create_exam: "Create new exam"
+      list_exam: "Available exam"
+  questions:
+    new:
+      title: "Create a new question"
+      create: "Create"
+      back: "Back"
+      question: "Question"
+      answers: "Answers"
+      correct_answers: "Correct answers"
+      type: "Type of question"
+    edit:
+      title: "Edit question"
+      create: "Update"
+      back: "Back"
+      question: "Question"
+      answers: "Answers"
+      correct_answers: "Correct answers"
+      type: "Type of question"
+      edit: "Update"
+  exams:
+    new:
+      title: "Create new exam"
+      create: "Create"
+      back: "Back"
+      name: "Exam name"
+      time_limit: "Time limit"
+      mark_require: "Mark require"
+    edit:
+      title: "Update exam"
+      create: "Update"
+      back: "Back"
+      name: "Exam name"
+      time_limit: "Time limit"
+      mark_require: "Mark require"

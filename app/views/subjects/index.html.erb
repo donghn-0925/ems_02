@@ -1,0 +1,14 @@
+<h1><%= t ".title" %></h1>
+<%= link_to t("home"), home_path(current_user.role) %>
+<%= link_to t(".create_subject"), new_subject_path %>
+
+<div class="col-md-8">
+    <h3><%= t".list" %> (<%= @subjects.size %>)</h3>
+    <ul class="subject">
+      <% @subjects.each do |subject| %>
+      <li>
+        <span class="subject"><%= link_to subject.name, edit_subject_path(subject) %></span>
+      </li>
+      <% end %>
+    </ul>
+</div>

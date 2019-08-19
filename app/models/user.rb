@@ -6,7 +6,7 @@ class User < ApplicationRecord
                              dependent: :destroy
   has_many :exams#, dependent: destroy
   has_many :trainee_answer_sheets#, dependent: destroy
-  has_many :questions
+  # has_many :questions, class_name: Question.name, foreign_key: :create_by
   # has_many :users
   # belongs_to :user, foreign_key: :create_by
   enum role: [:trainee, :admin, :supervisor] 
