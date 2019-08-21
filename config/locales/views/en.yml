@@ -106,3 +106,5 @@ en:
       name: "Exam name"
       time_limit: "Time limit"
       mark_require: "Mark require"
+      available_question: "Available question"
+      added_question: "Added question"

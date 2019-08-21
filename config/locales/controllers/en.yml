@@ -13,3 +13,4 @@ en:
   subject_updated: "Subject has been updated!!"
   exam_created: "The exam has been created!!"
   exam_updated: "The exam has been updated!!"
+  exam_not_found: "Failed to update"

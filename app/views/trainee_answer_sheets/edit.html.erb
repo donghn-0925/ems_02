@@ -1,0 +1,8 @@
+<div>
+  <%= form_for(@answer_sheet) do |f| %>
+    <div><%= f.label :start_time, @answer_sheet.start_time %></div>
+    <div><%= f.label :start_time, @answer_sheet.finish_time %></div>
+    <%= f.hidden_field :exam_id, value: params[:id] %>
+  <% end %>
+  <%= link_to "back", trainee_answer_sheets_path %>
+</div>

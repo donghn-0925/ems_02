@@ -1,10 +1,21 @@
 <h1>Trainee Home</h1>
 <p><%= link_to t(".home"), trainee_index_path %></p>
 <p><%= link_to t(".info"), edit_user_path(current_user) %></p>
-<p><%= link_to t(".history"), "#" %></p>
+<p><%= link_to t(".history"), trainee_answer_sheets_path %></p>
 <p><%= link_to t(".signout"), logout_path, method: :delete %></p>
 <p><%= current_user.fullname %></p>
 <p><%= current_user.email %></p>
 <p><%= current_user.address %></p>
 <p><%= current_user.role %></p>
-<%= render "active_subject" %>
+
+<h3><%= t(".subject_list") %></h3>
+  <ul class="subject_list">
+    <% @subjects.each do |subject| %>
+      <%= subject.name %>
+      <ul class="exam_in_subject">
+        <% subject.exams.each do |exam| %>
+        <li><%= link_to exam.name, exam_path(exam.id) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </ul>

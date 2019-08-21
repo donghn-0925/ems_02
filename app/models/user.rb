@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :active_subjects, class_name: UserHasSubject.name,
                              foreign_key: :user_id, 
                              dependent: :destroy
+  has_many :subjects, through: :active_subjects, source: :subject
+
   has_many :exams#, dependent: destroy
   has_many :trainee_answer_sheets#, dependent: destroy
   # has_many :questions, class_name: Question.name, foreign_key: :create_by

@@ -17,20 +17,36 @@
     <% end %>
   </div>
 
-  <div class="col-md-6 col-md-offset-3">  
-    <%= form_for(@exam) do |f| %>
-      <select name="questions" onchange="showQuestion(this.value)">
-        <option value="">Select a question:</option>
-        <% @questions.each do |question| %>
-          <option value="<%= question.id %>"><%= question.question_content %></option>
-        <% end %>
-      </select>
-    <% end %>
-  </div>
 
   <div class="col-md-6 col-md-offset-3" id="added_questions">
-
+      <h3><%= t(".added_question") %></h3>
+      <ul class="added_question">
+      <% @added_question.each do |question| %>
+        <%= form_for(@exam.questions_in.find_by(question_id: question.id),
+             html: { method: :delete }, :html => {:id=>"delete_question_form"}) do |f| %>
+          <%= hidden_field_tag :question_id, question.id %>
+          <%= hidden_field_tag :exam_id, @exam.id %>
+          <li><div id="<%= question.id %>">
+            <%= f.submit question.question_content, class: "btn btn-primary" %>
+          </div></li>
+        <% end %>
+        
+      <% end %>
+      </ul>
   </div>
   <div class="col-md-6 col-md-offset-3" id="available_questions">
-
+    <h3><%= t(".available_question") %></h3>
+      <ul class="available_question">
+      <% @questions.each do |question| %>
+        <%= form_for(@exam.questions_in.build, :html => {:id=>"add_question_form"}) do |f| %>
+          <%= hidden_field_tag :exam_id, @exam.id %>
+          
+          <li>
+          <div><input id="mark" name="mark" /></div>
+          <%= hidden_field_tag :question_id, question.id %>
+          <%= f.submit question.question_content, class: "btn btn-primary" %>
+          </li>
+        <% end %>
+    <% end %>
+    </ul>
   </div>

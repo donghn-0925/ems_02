@@ -11,7 +11,7 @@
       
       <%= f.label t(".answers") %>
       <div class="answers">
-        <% answer_array = @question.answers %>
+        <% answer_array = @question.answers.split("-----") %>
         <p hidden id="count-answer"><%= answer_array.size %></p>
         <div><button id="add-button" onclick="insertAnswer()" type="button"><%= t(".add") %></button></div>
 

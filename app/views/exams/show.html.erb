@@ -1,0 +1,19 @@
+<div>
+  <%= form_for(@answer_sheet) do |f| %>
+    <%= f.hidden_field :start_time, value: DateTime.now %>
+    <%= f.hidden_field :exam_id, value: params[:id] %>
+    <ul>
+      <% @questions.each do |question| %>
+        <li><%= question.question_content %></li>
+        <% question_array = question.answers.split("-----") %>
+        
+        <div>
+          <% question_array.each do |item| %>
+            <div><input type="checkbox" id="<% question_array.index(item) %>"><%= item %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </ul>
+    <input type="submit" onclick="createAnswerSheetData()" value="Submit" class="btn btn-primary" />
+  <% end %>
+</div>

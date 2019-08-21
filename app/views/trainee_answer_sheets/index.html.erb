@@ -1,0 +1,4 @@
+<%= link_to "back", trainee_index_path %>
+<% @answer_sheets.each do |answer_sheet| %>
+  <div><%= link_to Exam.find_by(id: answer_sheet.exam.id).name, edit_trainee_answer_sheet_path(answer_sheet.id) %></div>
+<% end %>
