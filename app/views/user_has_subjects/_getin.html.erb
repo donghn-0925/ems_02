@@ -1,0 +1,4 @@
+<%= form_for(current_subject_object.active_trainees.build) do |f| %>
+  <div><%= hidden_field_tag :user_id, object.id %></div>
+  <%= f.submit "get in", class: "btn btn-primary" %>
+<% end %>

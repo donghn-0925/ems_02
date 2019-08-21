@@ -1,0 +1,7 @@
+  <div id="follow_form">
+  <% if current_subject_object.user_in?(current_user) %>
+    <%= render 'getout' %>
+  <% else %>
+    <%= trainee %>
+  <% end %>
+  </div>

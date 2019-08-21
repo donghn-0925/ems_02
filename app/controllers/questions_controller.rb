@@ -26,8 +26,9 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    @answers = params[:answer1] + "-----" + params[:answer2] + "-----" + params[:answer3] + "-----" + params[:answer4]
-    defaults = {status: true, create_by: current_user.id, subject_id: current_subject, answers: @answers}
-    params.require(:question).permit(:question_content, :correct_answers, :question_type).reverse_merge(defaults)
+    @answers = params[:answers]
+    @correct_answers = params[:correct_answers]
+    defaults = {status: true, create_by: current_user.id, subject_id: current_subject, answers: @answers, correct_answers: @correct_answers, question_type: @all_correct_answers}
+    params.require(:question).permit(:question_content).reverse_merge(defaults)
   end
 end

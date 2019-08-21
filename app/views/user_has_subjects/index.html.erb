@@ -1,0 +1,20 @@
+<p><%= link_to t(".back"), edit_subject_path(current_subject) %></p>
+<div class="col-md-8">
+    <h3><%= t".list_trainee" %> (<%= @trainees.length %>)</h3>
+    <ul class="trainees">
+      <% @trainees.each do |trainee| %>
+        <li>
+          <span class="trainee"><%= link_to trainee.fullname, "#" %></span>
+
+            <div id="follow_form">
+              <% if current_subject_object.user_in?(trainee) %>
+                <%= render "getout", object: trainee %>
+              <% else %>
+                <%= render "getin", object: trainee %>
+              <% end %>
+            </div>
+
+        </li>
+      <% end %>
+    </ul>
+</div>

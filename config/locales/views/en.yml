@@ -69,6 +69,7 @@ en:
       list: "All questions"
       create_exam: "Create new exam"
       list_exam: "Available exam"
+      trainee: "Trainees in subject"
   questions:
     new:
       title: "Create a new question"
@@ -78,6 +79,9 @@ en:
       answers: "Answers"
       correct_answers: "Correct answers"
       type: "Type of question"
+      have_added: "You have added"
+      lower_answers: "answers"
+      add: "Add more answer"
     edit:
       title: "Edit question"
       create: "Update"

@@ -1,27 +1,51 @@
+<%= javascript_include_tag "questions" %>
 <h1><%= t(".title") %></h1>
 <% provide(:button_text, t(".edit")) %>
-  <p><%= link_to t(".back"), subjects_path %></p>
+  <p><%= link_to t(".back"), edit_subject_path(current_subject) %></p>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@question) do |f| %>
   
       <%= f.label t(".question") %>
       <%= f.text_area :question_content, class: "form-control" %>
 
+      
       <%= f.label t(".answers") %>
-      <%= text_area_tag :answer1 %>
+      <div class="answers">
+        <% answer_array = @question.answers %>
+        <p hidden id="count-answer"><%= answer_array.size %></p>
+        <div><button id="add-button" onclick="insertAnswer()" type="button"><%= t(".add") %></button></div>
 
-      <%= text_area_tag :answer2 %>
-
-      <%= text_area_tag :answer3 %>
-
-      <%= text_area_tag :answer4 %>
+        <div id="answer-form">
+          <% counter = 0 %>
+          <% answer_array.each do |item| %>
+            <% counter += 1 %>
+            <textarea id="answer-<%= counter %>" name="answer-<%= counter %>"><%= item %></textarea>
+          <% end %>
+        </div>
+      </div>
 
       <%= f.label t(".correct_answers") %>
-      <%= f.text_area :correct_answers, class: "form-control" %>
+      <div class="correct_answers">
+        <% answer_array = @question.correct_answers.split("-----") %>
+        <p hidden id="count-correct-answer"><%= answer_array.size %></p>
+        <div><button id="add-button" onclick="insertCorrectAnswer()" type="button"><%= t(".add") %></button></div>
+
+        <div id="correct-answer-form">
+          <% counter = 0 %>
+          <% answer_array.each do |item| %>
+            <% counter += 1 %>
+            <textarea id="correct-answer-<%= counter %>" name="correct-answer-<%= counter %>"><%= item %></textarea>
+          <% end %>
+        </div>
+
+      </div>
 
       <%= f.label t(".type") %>
       <%= f.text_field :question_type, class: "form-control" %>
+
+      <input id="all_answers" name="answers" type="hidden" value="" />
+      <input id="all_correct_answers" name="correct_answers" type="hidden" value="" />
       
-      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+      <input type="submit" onclick="createParamsData()" value="<%= t(".edit") %>" class="btn btn-primary" />
     <% end %>
   </div>

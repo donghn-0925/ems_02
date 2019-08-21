@@ -19,7 +19,7 @@
 
 <div class="col-md-8">
   <%= link_to t(".create_question"), new_question_path %>
-  </div>
+</div>
 <div class="col-md-8">
     <h3><%= t".list" %> (<%= @questions.size %>)</h3>
     <ul class="question">
@@ -44,4 +44,8 @@
         </li>
       <% end %>
     </ul>
+</div>
+
+<div class="col-md-8">
+  <h3><%= link_to t(".trainee"), user_has_subjects_path %></h3>
 </div>

@@ -1,0 +1,5 @@
+<%= form_for(current_subject_object.active_trainees.find_by(user_id: object.id),
+             html: { method: :delete }) do |f| %>
+  <%= hidden_field_tag :user_id, object.id %>
+  <%= f.submit "get out", class: "btn btn-primary" %>
+<% end %>

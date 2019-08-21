@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :subjects
   resources :questions
   resources :exams
+  resources :active_users_in_subject
+  resources :user_has_subjects
 end

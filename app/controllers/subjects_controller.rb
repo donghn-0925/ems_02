@@ -31,6 +31,10 @@ class SubjectsController < ApplicationController
     redirect_to edit_subject_path(@subject.id)
   end
 
+  def show
+    @trainee = User.trainee.where(id: (UserHasSubject.where(subject_id: params[:id]))).paginate(page: params[:page], per_page: Settings.users_per_page)
+  end
+
   private
   def subject_params
     defaults = {status: true, create_by: current_user.id}

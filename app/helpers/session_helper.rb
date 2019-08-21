@@ -35,4 +35,8 @@ module SessionHelper
   def current_subject
     @current_subject ||= session[:subject_id]
   end
+
+  def current_subject_object
+    @current_subject_object = Subject.find_by(id: current_subject)
+  end
 end

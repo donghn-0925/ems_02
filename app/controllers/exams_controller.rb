@@ -15,6 +15,7 @@ class ExamsController < ApplicationController
 
   def edit
     @exam = Exam.find_by(id: params[:id])
+    @questions = Question.where(subject_id: @exam.subject_id)
   end
 
   def update

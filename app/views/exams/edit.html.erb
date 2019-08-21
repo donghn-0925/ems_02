@@ -16,3 +16,21 @@
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>
   </div>
+
+  <div class="col-md-6 col-md-offset-3">  
+    <%= form_for(@exam) do |f| %>
+      <select name="questions" onchange="showQuestion(this.value)">
+        <option value="">Select a question:</option>
+        <% @questions.each do |question| %>
+          <option value="<%= question.id %>"><%= question.question_content %></option>
+        <% end %>
+      </select>
+    <% end %>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3" id="added_questions">
+
+  </div>
+  <div class="col-md-6 col-md-offset-3" id="available_questions">
+
+  </div>
