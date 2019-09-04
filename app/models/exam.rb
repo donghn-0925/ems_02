@@ -6,6 +6,10 @@ class Exam < ApplicationRecord
   belongs_to :user, foreign_key: :create_by
   belongs_to :subject, foreign_key: :subject_id
 
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :mark_require, presence: true, format: { with: /\A\d+\z/ }
+  validates :time_limit, presence: true, format: { with: /\A\d+\z/ }
+
   def add_question(question, mark)
     added_questions << question
     @added_question = ExamHasQuestion.find_by(question_id: question.id)

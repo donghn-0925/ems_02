@@ -7,6 +7,8 @@ class CreateExams < ActiveRecord::Migration[5.2]
       t.integer :subject_id
       t.integer :create_by
       t.integer :mark_require
+      t.datetime :start_date
+      t.datetime :end_date
 
       t.timestamps
     end

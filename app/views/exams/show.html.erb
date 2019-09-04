@@ -9,7 +9,7 @@
         
         <div>
           <% question_array.each do |item| %>
-            <div><input type="checkbox" id="<% question_array.index(item) %>"><%= item %></div>
+            <div><input type="checkbox" id="<%= question_array.find_index(item) %>"><%= item %></div>
           <% end %>
         </div>
       <% end %>

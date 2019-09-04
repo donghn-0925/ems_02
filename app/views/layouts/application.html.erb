@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <% if !current_user.nil? %>
+      <% if (current_user.supervisor?) %>
+      <%= render "layouts/supervisor_header" %>
+      <% elsif current_user.trainee? %>
+      
+      <% else %>
+
+      <% end %>
+    <% end %>
+
     <section class="content" style="min-height: auto;">
       <% flash.each do |key, value| %>
         <div class="row">

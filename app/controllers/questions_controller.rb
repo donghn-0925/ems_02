@@ -9,10 +9,10 @@ class QuestionsController < ApplicationController
     @question = Question.new question_with_default_params
     if @question.save
       flash[:success] = t "question_created"
+      redirect_to edit_subject_path(@question.subject_id)
     else
       flash[:danger] = t "fail_create"
     end
-    redirect_to edit_subject_path(@question.subject_id)
   end
 
   def edit; end
@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:question_content)
+    params.require(:question).permit(:question_content, :question_type)
   end
 
   def question_with_default_params

@@ -9,15 +9,18 @@ class ExamsController < ApplicationController
     @exam = Exam.new exam_with_default_params
     if @exam.save
       flash[:success] = t "exam_created"
+      redirect_to edit_subject_path(@exam.subject_id)
     else
       flash[:danger] = t "fail_create"
     end
-    redirect_to edit_subject_path(@exam.subject_id)
   end
 
   def edit
-    @questions = Question.where(subject_id: @exam.subject_id).where.not(id: (ExamHasQuestion.where(exam_id: @exam.id).pluck(:question_id)))
+    @questions = Question.where(subject_id: @exam.subject_id)
+      .where.not(id: (ExamHasQuestion.where(exam_id: @exam.id)
+      .pluck(:question_id)))
     @added_question = @exam.added_questions
+    # @question = ExamHasQuestion.
   end
 
   def update
@@ -33,7 +36,7 @@ class ExamsController < ApplicationController
   
   private
   def exam_params
-    params.require(:exam).permit(:name, :time_limit, :mark_require)
+    params.require(:exam).permit(:name, :time_limit, :mark_require, :start_date, :end_date)
   end
   
   def exam_with_default_params

@@ -1,20 +1,11 @@
-<h1><%= t(".title") %></h1>
+<%= javascript_include_tag "exam", "data-turbolinks-track" => true  %>
 <% provide(:button_text, t(".create")) %>
   <p><%= link_to t(".back"), edit_subject_path(current_subject) %></p>
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@exam) do |f| %>
-  
-      <%= f.label t(".name") %>
-      <%= f.text_field :name, class: "form-control" %>
-
-      <%= f.label t(".time_limit") %>
-      <%= f.text_field :time_limit, class: "form-control" %>
-
-      <%= f.label t(".mark_require") %>
-      <%= f.text_field :mark_require, class: "form-control" %>
-      
-      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-    <% end %>
+  <div id="legend">
+    <legend class=""><h1><%= t(".title") %></h1></legend>
+  </div>
+    <%= render "exam_form" %>
   </div>
 
 
@@ -50,3 +41,85 @@
     <% end %>
     </ul>
   </div>
+
+
+
+<div class="container">
+	<div class="row">
+        
+    <!-- panel preview -->
+    <div class="col-sm-5">
+      <h4><%= t(".available_question") %></h4>
+      <div class="panel panel-default">
+        <div class="panel-body form-horizontal payment-form">
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label"><%= t ".question" %></label>
+            <div class="col-sm-9">
+              <select class="form-control" id="status" name="status">
+                <% @questions.each do |question| %>
+                  <option><%= question.question_content %></option>
+                <% end %>  
+              </select>
+            </div>
+          </div>
+              
+          <div class="form-group">
+            <label for="amount" class="col-sm-3 control-label"><%= t ".mark" %></label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control" id="amount" name="amount">
+            </div>
+          </div>
+              
+
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button type="button" class="btn btn-default preview-add-button">
+                <span class="glyphicon glyphicon-plus"></span> Add
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>            
+    </div>
+
+    <div class="col-sm-7">
+      <h4>Preview:</h4>
+      <%# binding.pry %>
+      <%#= form_for(@questions.to_ary) do |f| %>
+      <form method="post" action="/exams">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="table-responsive">
+            <table class="table preview-table">
+              <thead>
+                <tr>
+                  <th><%= t ".question" %></th>
+                  <th><%= t ".mark" %></th>
+                </tr>
+              </thead>
+              <tbody>
+              <%#= f.hidden_field_tag :question, value: 1 %>
+              <input type="hidden" value="1" />
+                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+              </tbody> 
+            </table>
+          </div>                            
+        </div>
+      </div>
+    
+        <div class="row">
+            <div class="col-xs-12">
+
+                <hr class="line">
+                <button type="submit">submit</button>
+                <%#= f.submit t(".submit_text"),class: "btn btn-primary btn-block" %>
+            </div>                
+        </div>
+      </div>
+      <%# end %>
+      </form>
+  </div>
+</div>

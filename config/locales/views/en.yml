@@ -14,6 +14,9 @@ en:
   layouts:
     application: 
       title: "EMS 2"
+    supervisor_header:
+      logout: "Logout"
+      signout: "Sign out"
   users:
     edit:
       edit:
@@ -39,6 +42,9 @@ en:
       remember_me: "Remember me"
       remember_on_computer: "Remember me on this computer"
       forgot_password: "(forgot password)"
+      title: "EMS02"
+      page_name: "Login page"
+      description: "Login from here to access."
   trainee:
     index:
       home: "Home"
@@ -82,6 +88,9 @@ en:
       have_added: "You have added"
       lower_answers: "answers"
       add: "Add more answer"
+      one_answer: "One answer"
+      multiple_answer: "Multiple answers"
+      text_answer: "Text answer"
     edit:
       title: "Edit question"
       create: "Update"
@@ -99,7 +108,18 @@ en:
       name: "Exam name"
       time_limit: "Time limit"
       mark_require: "Mark require"
+    exam_form:
+      title: "Create new exam"
+      create: "Create"
+      back: "Back"
+      name: "Exam name"
+      time_limit: "Time limit"
+      mark_require: "Mark require"
+      start_date: "Start date"
+      end_date: "End date"
     edit:
+      submit_text: "Submit all and finish"
+      question: "Question"
       title: "Update exam"
       create: "Update"
       back: "Back"
@@ -108,3 +128,5 @@ en:
       mark_require: "Mark require"
       available_question: "Available question"
       added_question: "Added question"
+      mark: "Mark"
+      signout: "Sign Out"

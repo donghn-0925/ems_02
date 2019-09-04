@@ -1,30 +1,50 @@
 <%= javascript_include_tag "questions" %>
 <h1><%= t(".title") %></h1>
 <% provide(:button_text, t(".create")) %>
-  <p><%= link_to t(".back"), edit_subject_path(current_subject) %></p>
-  <div class="col-md-6 col-md-offset-3">
-  
-    <%= form_for(@question) do |f| %>
-  
-      <%= f.label t(".question") %>
-      <%= f.text_area :question_content, class: "form-control" %>
+<p><%= link_to t(".back"), edit_subject_path(current_subject) %></p>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for(@question) do |f| %>
+    <div>
+      <div><%= f.label t(".question") %></div>
+      <div><%= f.text_area :question_content, class: "form_control" %></div>
+    </div>
+    
+    <div>
+      <div><b><%= f.label t(".answers") %></b></div>
 
+      <div id="selected_answer">
+        <span>
+          <%= t(".have_added") %> 
+          <span id="count_answer" name="count_answer">0</span> 
+          <%= t(".lower_answers") %>
+        </span>  
+        <div>
+          <button id="add_button" onclick="insertAnswer()" type="button">
+            <%= t(".add") %>
+          </button>
+        </div>
+      </div>
       
-      <b><%= f.label t(".answers") %></b>
-      <div><button id="add-button" onclick="insertAnswer()" type="button"><%= t(".add") %></button></div>
-      <span><%= t(".have_added") %> <span id="count-answer" name="count-answer">0</span> <%= t(".lower_answers") %></span>
-      <div id="answer-form"></div>
+      
+      <div id="answer_form"></div>
+    </div>
 
-      <%= f.label t(".correct_answers") %>
-      <div><button id="add-button" onclick="insertCorrectAnswer()" type="button"><%= t(".add") %></button></div>
-      <span><%= t(".have_added") %> <span id="count-correct-answer">0</span> <%= t(".lower_answers") %></span>
-      <div id="correct-answer-form"></div>
+    <input id="all_answers" name="answers" type="hidden" value="" />
+    <input id="all_correct_answers" name="correct_answers" type="hidden" value="" />
+    <div>
+      <div><%= f.label t(".type") %></div>
+      <div>
+        <select id="type_of_question" name="question_type" onchange="changeAnswerForm(this.selectedIndex)">
+          <option value="one_answer"><%= t ".one_answer" %></option>
+          <option value="multiple_answer"><%= t ".multiple_answer" %></option>
+          <option value="multiple_answer"><%= t ".text_answer" %></option>
+        </select>
+      </div>
 
-      <input id="all_answers" name="answers" type="hidden" value="" />
-      <input id="all_correct_answers" name="correct_answers" type="hidden" value="" />
-
-      <%= f.label t(".type") %>
-      <%= f.text_field :question_type, class: "form-control" %>
-      <input type="submit" onclick="createParamsData()" value="<%= t(".create") %>" class="btn btn-primary" />
-    <% end %>
-  </div>
+      <div>
+        <input type="submit" onclick="createQuestionData()" 
+          value="<%= t(".create") %>" class="btn btn-primary" />
+      </div>
+    </div>
+  <% end %>
+</div>
